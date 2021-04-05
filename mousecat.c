@@ -9,6 +9,7 @@ LRESULT CALLBACK kbhcallback(int code, WPARAM w, LPARAM l) {
 void wait_to_unhook() {
     DWORD start_time = GetTickCount();
     while (GetTickCount() < (start_time + 30000)) {
+        Sleep(5);
     }
     UnhookWindowsHookEx(hook);
     hook = SetWindowsHookEx(WH_MOUSE_LL, kbhcallback, GetModuleHandle(0), 0);
